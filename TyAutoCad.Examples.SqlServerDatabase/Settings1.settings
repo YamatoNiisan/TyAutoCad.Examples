@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TyAutoCad.Examples.SqlServerDatabase" GeneratedClassName="Settings1">
+  <Profiles />
+  <Settings>
+    <Setting Name="TestConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=FILESERVERPC3;Initial Catalog=TestCadDB_230407;Persist Security Info=True;MultipleActiveResultSets=True;User ID=ss;Password=ssss;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

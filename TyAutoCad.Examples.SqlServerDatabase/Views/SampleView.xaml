@@ -1,0 +1,207 @@
+﻿<Window 
+    x:Class="TyAutoCad.Examples.SqlServerDatabase.Views.SampleView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:TyAutoCad.Examples.SqlServerDatabase.Views"
+    mc:Ignorable="d"
+    xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:bh="clr-namespace:TyAutoCad.Mvvm.Behaviors;assembly=TyAutoCad.Mvvm"
+    xmlns:cv="clr-namespace:TyAutoCad.Mvvm.Converters;assembly=TyAutoCad.Mvvm"
+    bh:CloseViewBehavior.Close="{Binding IsCloseView}"
+    Title="{Binding Title}" 
+    Height="350" Width="300" 
+    WindowStartupLocation="CenterScreen">
+    <behaviors:Interaction.Behaviors>
+        <bh:MoveFocusControl />
+    </behaviors:Interaction.Behaviors>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <cv:IntToBoolean x:Key="IntToBool"/>
+            <cv:EnumToBoolean x:Key="EnumToBool"/>
+            <cv:InverseBoolConverter x:Key="InveresBool"/>
+            <ControlTemplate x:Key="ValidationTemplate">
+                <StackPanel>
+                    <ItemsControl ItemsSource="{Binding AdornedElement.(Validation.Errors), ElementName=adornedelem}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Red" Text="{Binding ErrorContent}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <AdornedElementPlaceholder x:Name="adornedelem" />
+                </StackPanel>
+            </ControlTemplate>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="4"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="4"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="ComboBox">
+                <Setter Property="Margin" Value="4"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="RadioButton">
+                <Setter Property="Margin" Value="4"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="CheckBox">
+                <Setter Property="Margin" Value="4"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="4"/>
+                <Setter Property="Width" Value="80"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+
+            </Grid.ColumnDefinitions>
+            <StackPanel
+                Grid.Row="0" Grid.Column="0" 
+                VerticalAlignment="Center" >
+                <CheckBox 
+                    Content="Check1" 
+                    IsChecked="{Binding IsCheck1}"/>
+                <CheckBox 
+                    Content="Check2" 
+                    IsChecked="{Binding IsCheck2}"/>
+            </StackPanel>
+            <GroupBox 
+                Grid.Row="0" Grid.Column="1"
+                Header="Switch">
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton
+                        Content="On"
+                        IsChecked="{Binding Switch,Mode=TwoWay,
+                        Converter={StaticResource IntToBool},
+                        ConverterParameter=0,
+                        UpdateSourceTrigger=PropertyChanged}"/>
+                    <RadioButton
+                        Content="Off"
+                        IsChecked="{Binding Switch,Mode=TwoWay,
+                        Converter={StaticResource IntToBool},
+                        ConverterParameter=1,
+                        UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </GroupBox>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Text"/>
+            <TextBox
+                Grid.Row="1" Grid.Column="1"
+                Background="LightGray"
+                Text="{Binding TextBoxText,Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}">
+                <behaviors:Interaction.Behaviors>
+                    <bh:ChangeTextBoxColor 
+                        BackBrushOnGotFocus="LightYellow"
+                        BackBrushOnLostFocus="LightGray"/>
+                </behaviors:Interaction.Behaviors>
+            </TextBox>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="ComboCox"/>
+            <ComboBox 
+                Grid.Row="2" Grid.Column="1"
+                SelectedIndex="{Binding ItemIndex}"
+                SelectedItem="{Binding Item}"
+                ItemsSource="{Binding Items}"/>
+            <GroupBox 
+                Grid.Row="3" Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Header="EnumColor">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel 
+                        Grid.Row="2" 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center" >
+                        <RadioButton 
+                            Content="Red"
+                            IsEnabled="{Binding IsColor}"
+                            IsChecked="{Binding Color,Mode=TwoWay,
+                            Converter={StaticResource EnumToBool},
+                            ConverterParameter=Red,
+                            UpdateSourceTrigger=PropertyChanged}"/>
+                        <RadioButton 
+                            Content="Yellow"
+                            IsEnabled="{Binding IsColor}"
+                            IsChecked="{Binding Color,Mode=TwoWay,
+                            Converter={StaticResource EnumToBool},
+                            ConverterParameter=Yellow,
+                            UpdateSourceTrigger=PropertyChanged}"/>
+                        <RadioButton 
+                            Content="Green"
+                            IsEnabled="{Binding IsColor}"
+                            IsChecked="{Binding Color,Mode=TwoWay,
+                            Converter={StaticResource EnumToBool},
+                            ConverterParameter=Green,
+                            UpdateSourceTrigger=PropertyChanged}"/>
+                        <RadioButton
+                            Content="Blue"
+                            IsEnabled="{Binding IsColor}"
+                            IsChecked="{Binding Color,Mode=TwoWay,
+                            Converter={StaticResource EnumToBool},
+                            ConverterParameter=Blue,
+                            UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+
+        <Border 
+            Grid.Row="1" BorderThickness="5" 
+            BorderBrush="{Binding MessageColor}">
+            <TextBlock 
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="{Binding Message}"
+                FontSize="16"/>
+        </Border>
+
+        <TextBlock 
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="{Binding ErrorMessage}"
+            Foreground="{Binding ErrorMessageColor}"
+            FontSize="16"/>
+
+        <StackPanel 
+            Grid.Row="3" 
+            Orientation="Horizontal" 
+            HorizontalAlignment="Center">
+            <Button 
+                Content="Execute"
+                Command="{Binding ExecuteCommand}"/>
+            <Button 
+                Content="{Binding ButtonContent}"
+                Command="{Binding ClearCommand}"/>
+            <Button 
+                Content="Close"
+                Command="{Binding CloseCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

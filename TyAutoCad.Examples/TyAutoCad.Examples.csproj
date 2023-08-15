@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0C95CDB7-09D9-4463-B940-C4AEB5161755}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TyAutoCad.Examples</RootNamespace>
+    <AssemblyName>TyAutoCad.Examples</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>default</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>default</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AcCoreMgd, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.Core.24.2.0\lib\net47\AcCoreMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcCui, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.24.2.0\lib\net47\AcCui.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcDbMgd, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.Model.24.2.0\lib\net47\AcDbMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgdbrep, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.Model.24.2.0\lib\net47\acdbmgdbrep.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcDx, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.24.2.0\lib\net47\AcDx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMgd, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.24.2.0\lib\net47\AcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMPolygonMGD, Version=16.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Autodesk\AutoCAD 2024\AcMPolygonMGD.dll</HintPath>
+    </Reference>
+    <Reference Include="AcMr, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.24.2.0\lib\net47\AcMr.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcSeamless, Version=24.2.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD.NET.24.2.0\lib\net47\AcSeamless.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ACSMCOMPONENTS24Lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Digi-Ants.AutoCAD.SheetSetManager.24.0.2\lib\net48\ACSMCOMPONENTS24Lib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="AcTcMgd, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.24.2.0\lib\net47\AcTcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.24.2.0\lib\net47\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdUIMgd, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.24.2.0\lib\net47\AdUIMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdUiPalettes, Version=24.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.24.2.0\lib\net47\AdUiPalettes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows, Version=4.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD.NET.24.2.0\lib\net47\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AXDBLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Digi-Ants.AutoCAD.SheetSetManager.24.0.2\lib\net48\AXDBLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AAA.cs" />
+    <Compile Include="Entity\ModifyEntity\ChangeColorOfAllEntitiesInModelSpace.cs" />
+    <Compile Include="Extension\CurveExtensions.cs" />
+    <Compile Include="Extension\DatabaseExtensions.cs" />
+    <Compile Include="Extension\CircleExtensions.cs" />
+    <Compile Include="Extension\EntityExtensions.cs" />
+    <Compile Include="Extension\BlockReferenceExtensions.cs" />
+    <Compile Include="Extension\BlockTableRecordExtensions.cs" />
+    <Compile Include="Block\BlockExtension.cs" />
+    <Compile Include="Block\DynamicBlock\CloneDynamicBlock.cs" />
+    <Compile Include="Block\BurstBlock.cs" />
+    <Compile Include="Entity\BulgeVertices.cs" />
+    <Compile Include="Extension\CircularArc2dExtensions.cs" />
+    <Compile Include="Extension\DoubleExtensions.cs" />
+    <Compile Include="DrawOrder\MoveSelectedEntityToBottom.cs" />
+    <Compile Include="Extension\HatchExtensions.cs" />
+    <Compile Include="Extension\IListExtensions.cs" />
+    <Compile Include="Geometry\LineEquation.cs" />
+    <Compile Include="Geometry\Rectangle2d.cs" />
+    <Compile Include="Geometry\SimplePolygon2d.cs" />
+    <Compile Include="Extension\LineSegment2dExtensions.cs" />
+    <Compile Include="Extension\MLeaderExtensions.cs" />
+    <Compile Include="Entity\MLeaderLine.cs" />
+    <Compile Include="Extension\Vector3dExtensions.cs" />
+    <Compile Include="Extension\ObjectIdExtensions.cs" />
+    <Compile Include="GetSubsetOfAllOpenSheetsets.cs" />
+    <Compile Include="Jig\EntityJig\RectangleEntityJig.cs" />
+    <Compile Include="Info\SelectAndGetEntityProperties.cs" />
+    <Compile Include="SelectionSet\SelectCircles.cs" />
+    <Compile Include="SelectionSet\SelectDimensions.cs" />
+    <Compile Include="SheetSet\GetAllOpenSheetSets.cs" />
+    <Compile Include="Info\GetBlockReferenceProperties.cs" />
+    <Compile Include="GetBlockTableRecordNotLayout.cs" />
+    <Compile Include="Info\GetBlockTableRecordProperties.cs" />
+    <Compile Include="GetLayerState.cs" />
+    <Compile Include="Info\GetModelSpaceProperties.cs" />
+    <Compile Include="Jig\EntityJig\MLeaderLineJigger.cs" />
+    <Compile Include="Extension\PromptNestedEntityResultExtensions.cs" />
+    <Compile Include="Entity\NumericString.cs" />
+    <Compile Include="Extension\StringExtensions.cs" />
+    <Compile Include="Xref\GetXrefs.cs" />
+    <Compile Include="Linetype\GetAllLinetypes.cs" />
+    <Compile Include="Extension\Point2dCollectionExtensions.cs" />
+    <Compile Include="Extension\Point2dExtensions.cs" />
+    <Compile Include="Extension\Point3dExtensions.cs" />
+    <Compile Include="Extension\PolylineExtensions.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Ribbon\RibbonExamples.cs" />
+    <Compile Include="Styles\GetAllDimStyles.cs" />
+    <Compile Include="Styles\GetAllMLeaderStyles.cs" />
+    <Compile Include="Styles\GetAllTextStyles.cs" />
+    <Compile Include="SystemVariable\GetSetSystemVariable.cs" />
+    <Compile Include="Info\AcDbCurveInfo.cs" />
+    <Compile Include="Info\AcDbDimensionInfo.cs" />
+    <Compile Include="Info\AcDbEntityInfo.cs" />
+    <Compile Include="Info\AcDbInfo.cs" />
+    <Compile Include="Info\GetDatabaseProperties.cs" />
+    <Compile Include="Info\GetDocumentProperties.cs" />
+    <Compile Include="Info\GetEditorProperties.cs" />
+    <Compile Include="Info\GetTransactionProperties.cs" />
+    <Compile Include="Jig\DrawJig\CircleDrawJig.cs" />
+    <Compile Include="Jig\DrawJig\IsoscelesRightTriangleDrawJig.cs" />
+    <Compile Include="Jig\DrawJig\IsoscelesRightTriangleHatchDrawJig.cs" />
+    <Compile Include="Jig\EntityJig\CircleEntityJig.cs" />
+    <Compile Include="Entity\ModifyEntity\ChangeColorOfAllEntities.cs" />
+    <Compile Include="Entity\ModifyEntity\ChangeColorOfAllEntitiesInBlock.cs" />
+    <Compile Include="Commands.cs" />
+    <Compile Include="AppWindow\ControlAppWindow.cs" />
+    <Compile Include="AppWindow\ControlAppWindowCurrentState.cs" />
+    <Compile Include="AppWindow\ControlAppWindowMinMax.cs" />
+    <Compile Include="AppWindow\ControlAppWindowVisible.cs" />
+    <Compile Include="AppWindow\ControlDocWindowSize.cs" />
+    <Compile Include="Entity\CreateEntity\Create1MillionLines.cs" />
+    <Compile Include="Entity\CreateEntity\CreateArc.cs" />
+    <Compile Include="Entity\CreateEntity\CreateCircle.cs" />
+    <Compile Include="Block\DefineBlock.cs" />
+    <Compile Include="Block\DefineBlockFromSelectionSet.cs" />
+    <Compile Include="Block\DynamicBlock\GetDynamicBlockProperties.cs" />
+    <Compile Include="Block\Attribute\GetAttribute.cs" />
+    <Compile Include="App\LoadAssembly.cs" />
+    <Compile Include="Entity\GetEntity\GetAllEntitiesInModelSpace.cs" />
+    <Compile Include="Entity\GetEntity\GetObjectIdOfAllEntitiesInModelSpace.cs" />
+    <Compile Include="Directory\GetAllDwgFilesFromDirectory.cs" />
+    <Compile Include="Directory\ImportAllBlocksFromDwgFile.cs" />
+    <Compile Include="Directory\ImportBlockToCurrentDwg.cs" />
+    <Compile Include="Directory\ImportDwgFileAsBlock.cs" />
+    <Compile Include="Jig\DrawJig\HatchDrawJig.cs" />
+    <Compile Include="Jig\DrawJig\LineDrawJig.cs" />
+    <Compile Include="Jig\EntityJig\LineEntityJig.cs" />
+    <Compile Include="Jig\DrawJig\PolyLineDrawJig.cs" />
+    <Compile Include="Layer\CreateLayerWithUserInput.cs" />
+    <Compile Include="Layer\GetAllLayers.cs" />
+    <Compile Include="Layer\GetLayerSelectedEntity.cs" />
+    <Compile Include="Layer\GetLockedLayerNames.cs" />
+    <Compile Include="Layer\LockLayerSelectedEntity.cs" />
+    <Compile Include="Layer\LockOrUnlockAllLayers.cs" />
+    <Compile Include="Layer\RenameLayer.cs" />
+    <Compile Include="Layout\GetAllLayouts.cs" />
+    <Compile Include="Prompt\GetAnglePrompt.cs" />
+    <Compile Include="Prompt\GetDoublePrompt.cs" />
+    <Compile Include="Prompt\GetIntegerPrompt.cs" />
+    <Compile Include="DatabaseBasic\GetNamedObjectsDictionary.cs" />
+    <Compile Include="DatabaseBasic\GetTableAndTableRecord.cs" />
+    <Compile Include="Prompt\GetKeywordsPrompt.cs" />
+    <Compile Include="Prompt\GetSelectionPrompt.cs" />
+    <Compile Include="Prompt\GetStringPrompt.cs" />
+    <Compile Include="Layer\CreateLayer.cs" />
+    <Compile Include="Entity\CreateEntity\CreateLine.cs" />
+    <Compile Include="Entity\CreateEntity\CreateMText.cs" />
+    <Compile Include="Entity\CreateEntity\CreatePoint.cs" />
+    <Compile Include="Entity\CreateEntity\CreatePolyline.cs" />
+    <Compile Include="Entity\CreateEntity\CreatePolylineByPolygonSelection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Block\SelectAndGetBlockName.cs" />
+    <Compile Include="Prompt\SelectAndGet2Points.cs" />
+    <Compile Include="Prompt\SelectAndGetPoint.cs" />
+    <Compile Include="AppWindow\ShowProgressMeter.cs" />
+    <Compile Include="AppWindow\TaskDialogShowMarqueeProgressBar.cs" />
+    <Compile Include="Prompt\Select2PointsToGetRectAnglePoints.cs" />
+    <Compile Include="Prompt\SelectAndGetCornerPoints.cs" />
+    <Compile Include="Prompt\SelectAndGetEntityObjectId.cs" />
+    <Compile Include="Prompt\SelectAndGetNestedEntityObjectId.cs" />
+    <Compile Include="Jig\DrawJig\SimplePolygonDrawJig.cs" />
+    <Compile Include="Jig\EntityJig\ThreePointsCircleEntityJig.cs" />
+    <Compile Include="Jig\DrawJig\RectangleDrawJig.cs" />
+    <Compile Include="Jig\DrawJig\RectangleHatchDrawJig.cs" />
+    <Compile Include="Jig\DrawJig\SemiCircleDrawJig.cs" />
+    <Compile Include="Jig\DrawJig\SemiCircleHatchDrawJig.cs" />
+    <Compile Include="Jig\DrawJig\SquareDrawJig.cs" />
+    <Compile Include="Jig\DrawJig\SimplePolygonHatchDrawJig.cs" />
+    <Compile Include="Jig\DrawJig\SquareHatchDrawJig.cs" />
+    <Compile Include="Prompt\SelectAndGetBlockReference.cs" />
+    <Compile Include="Geometry\Triangles\TriangleAndApolloniusCircleDrawJig.cs" />
+    <Compile Include="Geometry\Triangles\TriangleAndCentroidDrawJig.cs" />
+    <Compile Include="Geometry\Triangles\TriangleAndCircumcenterAndCircumcircleDrawJig.cs" />
+    <Compile Include="Geometry\Triangles\TriangleAndCircumcenterDrawJig.cs" />
+    <Compile Include="Geometry\Triangles\TriangleAndExcenterDrawJig.cs" />
+    <Compile Include="Geometry\Triangles\TriangleAndIncenterAndIncircleDrawJig.cs" />
+    <Compile Include="Geometry\Triangles\TriangleAndIncenterDrawJig.cs" />
+    <Compile Include="Geometry\Triangles\TriangleAndNinePointCircleDrawJig.cs" />
+    <Compile Include="Geometry\Triangles\TriangleAndOrthocenterDrawJig.cs" />
+    <Compile Include="Geometry\Triangles\TriangleDrawJig.cs" />
+    <Compile Include="Prompt\SelectAndGetCurve.cs" />
+    <Compile Include="Block\DynamicBlock\SetDynamicBlockProperty.cs" />
+    <Compile Include="Prompt\TraceBoundary.cs" />
+    <Compile Include="Prompt\SelectAndGetNestedCircular.cs" />
+    <Compile Include="Jig\DrawJig\ThreePointsArcDrawJig.cs" />
+    <Compile Include="Jig\EntityJig\ThreePointsArcEntityJig.cs" />
+    <Compile Include="Layer\SetCurrentLayer.cs" />
+    <Compile Include="Geometry\Triangle2d.cs" />
+    <Compile Include="Geometry\Triangle3d.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\large.png" />
+    <Content Include="Resources\Small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
