@@ -1,4 +1,4 @@
-﻿using AcAp = Autodesk.AutoCAD.ApplicationServices.Application;
+﻿
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AcAp = Autodesk.AutoCAD.ApplicationServices.Application;
 
 [assembly: CommandClass(typeof(TyAutoCad.Examples.Commands))]
 
