@@ -130,8 +130,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AAA.cs" />
-    <Compile Include="GetBlockReferenceInsertionPoint.cs" />
-    <Compile Include="MoveBlockReferenceWcsToMcs.cs" />
+    <Compile Include="Block\GetBlockReferenceInsertionPoint.cs" />
+    <Compile Include="Block\MoveBlockReferenceWcsToMcs.cs" />
     <Compile Include="Entity\ModifyEntity\ChangeColorOfAllEntitiesInModelSpace.cs" />
     <Compile Include="Extension\CurveExtensions.cs" />
     <Compile Include="Extension\DatabaseExtensions.cs" />
@@ -156,6 +156,7 @@
     <Compile Include="Entity\MLeaderLine.cs" />
     <Compile Include="Extension\Vector3dExtensions.cs" />
     <Compile Include="Extension\ObjectIdExtensions.cs" />
+    <Compile Include="GetPointWcsAndUcs.cs" />
     <Compile Include="GetSubsetOfAllOpenSheetsets.cs" />
     <Compile Include="Jig\EntityJig\RectangleEntityJig.cs" />
     <Compile Include="Info\SelectAndGetEntityProperties.cs" />
