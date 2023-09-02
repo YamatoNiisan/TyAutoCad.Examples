@@ -156,7 +156,8 @@
     <Compile Include="Entity\MLeaderLine.cs" />
     <Compile Include="Extension\Vector3dExtensions.cs" />
     <Compile Include="Extension\ObjectIdExtensions.cs" />
-    <Compile Include="GetPointWcsAndUcs.cs" />
+    <Compile Include="Jig\DrawJig\LineDrawJigCreateEntityFirst.cs" />
+    <Compile Include="Prompt\GetPointWcsAndUcs.cs" />
     <Compile Include="GetSubsetOfAllOpenSheetsets.cs" />
     <Compile Include="Jig\EntityJig\RectangleEntityJig.cs" />
     <Compile Include="Info\SelectAndGetEntityProperties.cs" />

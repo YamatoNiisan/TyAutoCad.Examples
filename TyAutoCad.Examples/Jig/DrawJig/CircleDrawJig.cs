@@ -1,4 +1,4 @@
-﻿using Autodesk.AutoCAD.ApplicationServices;
+﻿using AcAp = Autodesk.AutoCAD.ApplicationServices.Application;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
@@ -25,7 +25,7 @@ namespace TyAutoCad.Examples
         #endregion
 
         #region Properties
-        public Matrix3d Ucs => Application.DocumentManager.MdiActiveDocument.Editor.CurrentUserCoordinateSystem;
+        public Matrix3d Ucs => AcAp.DocumentManager.MdiActiveDocument.Editor.CurrentUserCoordinateSystem;
         #endregion
 
         #region Overrides
@@ -86,7 +86,7 @@ namespace TyAutoCad.Examples
         {
 
             // Document, Editor, Database を取得
-            var doc = Application.DocumentManager.MdiActiveDocument;
+            var doc = AcAp.DocumentManager.MdiActiveDocument;
             if (doc == null) return;
             var ed = doc.Editor;
             var db = doc.Database;
@@ -119,7 +119,7 @@ namespace TyAutoCad.Examples
                 }
                 catch (Autodesk.AutoCAD.Runtime.Exception ex)
                 {
-                    Application.ShowAlertDialog("Error CircleDrawJig\n\t" + ex.Message);
+                    AcAp.ShowAlertDialog("Error CircleDrawJig\n\t" + ex.Message);
                 }
             }
             ed.WriteMessage("\n--- コマンド終了 ---");
