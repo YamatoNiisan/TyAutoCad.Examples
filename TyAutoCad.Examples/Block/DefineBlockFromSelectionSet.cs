@@ -12,39 +12,39 @@ using System.Threading.Tasks;
 [assembly: CommandClass(typeof(TyAutoCad.Examples.DefineBlockFromSelectionSet))]
 namespace TyAutoCad.Examples
 {
-    internal static class LayerExtensions
-    {
-        #region GetLockedLayers
-        /// <summary>
-        /// ロックされている画層の名前を取得
-        /// </summary>
-        /// <param name="db"></param>
-        /// <returns></returns>
-        internal static IEnumerable<string> GetLockedLayers(this Database db)
-        {
-            if (db == null) return Enumerable.Empty<string>();
-            var lockedLayers = new List<string>();
+    //internal static class LayerExtensions
+    //{
+    //    #region GetLockedLayers
+    //    /// <summary>
+    //    /// ロックされている画層の名前を取得
+    //    /// </summary>
+    //    /// <param name="db"></param>
+    //    /// <returns></returns>
+    //    internal static IEnumerable<string> GetLockedLayers(this Database db)
+    //    {
+    //        if (db == null) return Enumerable.Empty<string>();
+    //        var lockedLayers = new List<string>();
 
-            // トランザクション開始
-            using (var tr = db.TransactionManager.StartTransaction())
-            {
-                var layerTable = tr.GetObject(db.LayerTableId, OpenMode.ForRead) as LayerTable;
-                foreach (ObjectId id in layerTable)
-                {
-                    var layer = tr.GetObject(id, OpenMode.ForRead) as LayerTableRecord;
-                    if (layer.IsLocked)
-                    {
-                        lockedLayers.Add(layer.Name);
-                    }
-                }
-            }
-            return lockedLayers;
-        }
+    //        // トランザクション開始
+    //        using (var tr = db.TransactionManager.StartTransaction())
+    //        {
+    //            var layerTable = tr.GetObject(db.LayerTableId, OpenMode.ForRead) as LayerTable;
+    //            foreach (ObjectId id in layerTable)
+    //            {
+    //                var layer = tr.GetObject(id, OpenMode.ForRead) as LayerTableRecord;
+    //                if (layer.IsLocked)
+    //                {
+    //                    lockedLayers.Add(layer.Name);
+    //                }
+    //            }
+    //        }
+    //        return lockedLayers;
+    //    }
 
-        internal static IEnumerable<string> GetLockedLayers()
-            => Application.DocumentManager.MdiActiveDocument.Database.GetLockedLayers();
-        #endregion
-    }
+    //    internal static IEnumerable<string> GetLockedLayers()
+    //        => Application.DocumentManager.MdiActiveDocument.Database.GetLockedLayers();
+    //    #endregion
+    //}
 
     public class DefineBlockFromSelectionSet
     {
