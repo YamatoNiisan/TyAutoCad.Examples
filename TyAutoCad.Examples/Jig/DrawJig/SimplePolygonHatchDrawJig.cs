@@ -119,12 +119,12 @@ namespace TyAutoCad.Examples
         }
         #endregion
 
-        #region Command
+        #region Method
         /// <summary>
         /// DrawJig を使って単純な多角形ハッチングを作成
         /// </summary>
-        [CommandMethod("SimplePolygonHatchDrawJig")]
-        public static void Command()
+        //[CommandMethod("SimplePolygonHatchDrawJig")]
+        public static void Execute()
         {
             // Document, Editor, Database を取得
             var doc = Application.DocumentManager.MdiActiveDocument;
@@ -198,6 +198,17 @@ namespace TyAutoCad.Examples
                 }
             }
             ed.WriteMessage("\n--- コマンド終了 ---");
+        }
+        #endregion
+
+        #region Command
+        /// <summary>
+        /// DrawJig を使って単純な多角形ハッチングを作成
+        /// </summary>
+        [CommandMethod("SimplePolygonHatchDrawJig")]
+        public static void Command()
+        {
+            SimplePolygonHatchDrawJig.Execute();
         }
         #endregion
     }

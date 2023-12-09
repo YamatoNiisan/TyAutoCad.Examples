@@ -162,6 +162,7 @@
     <Compile Include="GetSubsetOfAllOpenSheetsets.cs" />
     <Compile Include="Jig\EntityJig\RectangleEntityJig.cs" />
     <Compile Include="Info\SelectAndGetEntityProperties.cs" />
+    <Compile Include="Jig\DrawJig\RectangleOrSimplePolygonDrawJig.cs" />
     <Compile Include="SelectionSet\SelectCircles.cs" />
     <Compile Include="SelectionSet\SelectDimensions.cs" />
     <Compile Include="SheetSet\GetAllOpenSheetSets.cs" />

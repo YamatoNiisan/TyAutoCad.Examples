@@ -31,6 +31,13 @@ namespace TyAutoCad.Examples
             _poly = poly;
             AddDummyVertex();
         }
+
+        public SimplePolygonDrawJig(Polyline poly, Point3d basePoint)
+        {
+            _poly = poly;
+            _poly.AddVertexAt(_poly.NumberOfVertices, basePoint.Convert2d(), 0, 0, 0);
+            AddDummyVertex();
+        }
         #endregion
 
         #region Methods
@@ -96,12 +103,11 @@ namespace TyAutoCad.Examples
         }
         #endregion
 
-        #region Command
+        #region Method
         /// <summary>
         /// DrawJig を使って単純な多角形を作成
         /// </summary>
-        [CommandMethod("SimplePolygonDrawJig")]
-        public static void Command()
+        public static void Execute(Point3d? basePoint = null)
         {
             // Document, Editor, Database を取得
             var doc = Application.DocumentManager.MdiActiveDocument;
@@ -127,7 +133,15 @@ namespace TyAutoCad.Examples
                     tr.AddNewlyCreatedDBObject(poly, true);
 
                     // ポリラインをJigに渡す
-                    var jigger = new SimplePolygonDrawJig(poly);
+                    SimplePolygonDrawJig jigger = null;
+                    if (basePoint == null)
+                    {
+                        jigger = new SimplePolygonDrawJig(poly);
+                    }
+                    else
+                    {
+                        jigger = new SimplePolygonDrawJig(poly, (Point3d)basePoint);
+                    }
 
                     PromptResult result;
                     do
@@ -166,6 +180,17 @@ namespace TyAutoCad.Examples
                 }
             }
             ed.WriteMessage("\n--- コマンド終了 ---");
+        }
+        #endregion
+
+        #region Command
+        /// <summary>
+        /// DrawJig を使って単純な多角形を作成
+        /// </summary>
+        [CommandMethod("SimplePolygonDrawJig")]
+        public static void Command()
+        {
+            SimplePolygonDrawJig.Execute();
         }
         #endregion
     }

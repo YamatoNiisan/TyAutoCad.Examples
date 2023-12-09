@@ -13,6 +13,23 @@ namespace TyAutoCad.Examples
     /// </summary>
     public static class AcDbInfo
     {
+        #region ObjectClass
+        /// <summary>
+        /// ObjectClassのプロパティを取得する
+        /// </summary>
+        /// <param name="objectId"></param>
+        public static string GetObjectClassProperties(ObjectId objectId) => 
+            "\n\n--- ObjectClass Properties ---" +
+            "\n\tAppName         : " + objectId.ObjectClass.AppName +
+            "\n\tAutoDelete      : " + objectId.ObjectClass.AutoDelete +
+            "\n\tClassVersion    : " + objectId.ObjectClass.ClassVersion +
+            "\n\tDxfName         : " + objectId.ObjectClass.DxfName +
+            "\n\tIsDisposed      : " + objectId.ObjectClass.IsDisposed +
+            "\n\tMyParent        : " + objectId.ObjectClass.MyParent +
+            "\n\tName            : " + objectId.ObjectClass.Name +
+            "\n\tProxyFlags      : " + objectId.ObjectClass.ProxyFlags +
+            "\n\tUnmanagedObject : " + objectId.ObjectClass.UnmanagedObject;
+
         /// <summary>
         /// ObjectClassのプロパティを出力する
         /// </summary>
@@ -31,6 +48,30 @@ namespace TyAutoCad.Examples
             ed.WriteMessage("\n\tProxyFlags      : " + objectId.ObjectClass.ProxyFlags);
             ed.WriteMessage("\n\tUnmanagedObject : " + objectId.ObjectClass.UnmanagedObject);
         }
+        #endregion
+
+        #region ObjectId
+        /// <summary>
+        /// ObjectId のプロパティを取得する
+        /// </summary>
+        /// <param name="objectId"></param>
+        public static string GetObjectIdProperties(ObjectId objectId) =>
+            "\n\n--- ObjectId Properties ---" +
+            "\n\tObjectId            : " + objectId +
+            "\n\tDatabase            : " + objectId.Database +
+            "\n\tHandle              : " + objectId.Handle +
+            "\n\tIsEffectivelyErased : " + objectId.IsEffectivelyErased +
+            "\n\tIsErased            : " + objectId.IsErased +
+            "\n\tIsNull              : " + objectId.IsNull +
+            "\n\tIsResident          : " + objectId.IsResident +
+            "\n\tIsValid             : " + objectId.IsValid +
+            "\n\tNonForwardedHandle  : " + objectId.NonForwardedHandle +
+            "\n\t(static)Null        : " + ObjectId.Null +
+            "\n\tObjectClass         : " + objectId.ObjectClass +
+            // ed.WriteMessage("\n\tOldId               : " + objectId.OldId); // 旧式
+            "\n\tOldIdPtr            : " + objectId.OldIdPtr +
+            "\n\tOriginalDatabase    : " + objectId.OriginalDatabase +
+            "\n\tIsWellBehaved       : " + objectId.IsWellBehaved;
 
         /// <summary>
         /// ObjectId のプロパティを出力する
@@ -56,7 +97,9 @@ namespace TyAutoCad.Examples
             ed.WriteMessage("\n\tOriginalDatabase    : " + objectId.OriginalDatabase);
             ed.WriteMessage("\n\tIsWellBehaved       : " + objectId.IsWellBehaved);
         }
+        #endregion
 
+        #region DBObject
         /// <summary>
         /// DBObject のプロパティを出力する
         /// </summary>
@@ -99,6 +142,7 @@ namespace TyAutoCad.Examples
             ed.WriteMessage("\n\tUndoFiler              : " + dbObject.UndoFiler);
             ed.WriteMessage("\n\tXData                  : " + dbObject.XData);
         }
+        #endregion
 
         /// <summary>
         /// SymbolTableのプロパティを出力する

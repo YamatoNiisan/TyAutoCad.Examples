@@ -38,7 +38,7 @@ namespace TyAutoCad.Examples
                     foreach (ObjectId id in bt)
                     {
                         var btr = tr.GetObject(id, OpenMode.ForRead, false, false) as BlockTableRecord;
-                        ed.WriteMessage("\n\n--- Curve Properties ---");
+                        ed.WriteMessage("\n\n--- BlockTableRecord Properties ---");
                         ed.WriteMessage("\nName : {0}", btr.Name);
                         ed.WriteMessage("\n\tAcadObject              : {0}", btr.AcadObject);
                         ed.WriteMessage("\n\tAnnotative              : {0}", btr.Annotative);
@@ -113,6 +113,43 @@ namespace TyAutoCad.Examples
                 }
             }
 
+            ed.WriteMessage("\n--- コマンド終了 ---");
+        }
+
+        /// <summary>
+        /// BlockTableRecord の名前を取得して出力
+        /// </summary>
+        [CommandMethod("GetBlockTableRecordNames")]
+        public static void Command01()
+        {
+            // Document, Editor, Database を取得
+            var doc = AcAp.DocumentManager.MdiActiveDocument;
+            if (doc == null) return;
+            var ed = doc.Editor;
+            var db = doc.Database;
+
+            ed.WriteMessage("\n--- BlockTableRecord の名前を取得して出力 ---");
+
+            // トランザクション開始
+            using (var tr = db.TransactionManager.StartTransaction())
+            {
+                try
+                {
+                    // BlockTable を取得
+                    var bt = tr.GetObject(db.BlockTableId, OpenMode.ForRead, false, false) as BlockTable;
+                    foreach (ObjectId id in bt)
+                    {
+                        var btr = tr.GetObject(id, OpenMode.ForRead, false, false) as BlockTableRecord;
+                        ed.WriteMessage("\n\n------------------------------------------");
+                        ed.WriteMessage("\nName : {0}", btr.Name);
+                    }
+                }
+                catch (Autodesk.AutoCAD.Runtime.Exception ex)
+                {
+                    AcAp.ShowAlertDialog("Error Command\n\t" + ex.Message);
+                }
+            }
+            ed.WriteMessage("\n\n------------------------------------------");
             ed.WriteMessage("\n--- コマンド終了 ---");
         }
         #endregion

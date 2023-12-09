@@ -108,12 +108,12 @@ namespace TyAutoCad.Examples
         }
         #endregion
 
-        #region Command
+        #region Method
         /// <summary>
         /// DrawJig を使って四角形のハッチングを作成
         /// </summary>
-        [CommandMethod("RectangleHatchDrawJig")]
-        public static void Command()
+        //[CommandMethod("RectangleHatchDrawJig")]
+        public static void Execute()
         {
             // Document, Editor, Database を取得
             var doc = Application.DocumentManager.MdiActiveDocument;
@@ -182,6 +182,17 @@ namespace TyAutoCad.Examples
             }
 
             ed.WriteMessage("\n--- コマンド終了 ---");
+        }
+        #endregion
+
+        #region Command
+        /// <summary>
+        /// DrawJig を使って四角形のハッチングを作成
+        /// </summary>
+        [CommandMethod("RectangleHatchDrawJig")]
+        public static void Command()
+        {
+            RectangleHatchDrawJig.Execute();
         }
         #endregion
     }

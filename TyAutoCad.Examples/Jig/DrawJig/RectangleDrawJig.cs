@@ -32,6 +32,14 @@ namespace TyAutoCad.Examples
             _ucs = ucs;
             _poly = poly;
         }
+
+        public RectangleDrawJig(Matrix3d ucs, Polyline poly, Point3d basePoint)
+        {
+            _ucs = ucs;
+            _poly = poly;
+            P1 = P3 = basePoint;
+            _hasFirstPoint = true;
+        }
         #endregion
 
         #region Properties
@@ -83,12 +91,11 @@ namespace TyAutoCad.Examples
         }
         #endregion
 
-        #region Command
+        #region Method
         /// <summary>
         /// DrawJig を使って四角形を作成
         /// </summary>
-        [CommandMethod("RectangleDrawJig")]
-        public static void Command()
+        public static void Execute(Point3d? basePoint = null)
         {
             // Document, Editor, Database を取得
             var doc = Application.DocumentManager.MdiActiveDocument;
@@ -111,6 +118,12 @@ namespace TyAutoCad.Examples
                     var poly = new Polyline();
                     for (int i = 0; i < 4; i++)
                         poly.AddVertexAt(i, Point2d.Origin, 0, 0, 0);
+
+                    if (basePoint != null)
+                    {
+                        Point3d bp = (Point3d)basePoint;
+                        poly.SetPointAt(0, bp.Convert2d());
+                    }
                     poly.Closed = true;
                     poly.Normal = Vector3d.ZAxis.TransformBy(ed.CurrentUserCoordinateSystem);
                     poly.Transparency = new Transparency(100);
@@ -118,7 +131,15 @@ namespace TyAutoCad.Examples
                     tr.AddNewlyCreatedDBObject(poly, true);
 
                     // ジグにUCSとポリラインを渡す
-                    var jigger = new RectangleDrawJig(ucs, poly);
+                    RectangleDrawJig jigger = null;
+                    if (basePoint == null)
+                    {
+                        jigger = new RectangleDrawJig(ucs, poly);
+                    }
+                    else
+                    {
+                        jigger = new RectangleDrawJig(ucs, poly, (Point3d)basePoint);
+                    }
 
                     PromptResult result;
                     do
@@ -149,5 +170,17 @@ namespace TyAutoCad.Examples
             ed.WriteMessage("\n--- コマンド終了 ---");
         }
         #endregion
+
+        #region Command
+        /// <summary>
+        /// DrawJig を使って四角形を作成
+        /// </summary>
+        [CommandMethod("RectangleDrawJig")]
+        public static void Command()
+        {
+            RectangleDrawJig.Execute();
+        }
+        #endregion
+
     }
 }
